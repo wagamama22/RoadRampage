@@ -145,6 +145,7 @@ MonoBehaviour:
   - {fileID: 5816993715648229127, guid: b2d5357ecca2bad438891e38fbdb9bd1, type: 3}
   - {fileID: 5816993715648229127, guid: b2d5357ecca2bad438891e38fbdb9bd1, type: 3}
   obstacleAcceleration: 4
+  waveManager: {fileID: 11400000, guid: e12564c2989ed7b45863029aa10d3237, type: 2}
 --- !u!1001 &381636225009679643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -558,7 +559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1721322634990246991, guid: 8ab53e61e46009b4b9b3202b8ae97244, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.8
+      value: 12.09
       objectReference: {fileID: 0}
     - target: {fileID: 1721322634990246991, guid: 8ab53e61e46009b4b9b3202b8ae97244, type: 3}
       propertyPath: m_LocalPosition.z
