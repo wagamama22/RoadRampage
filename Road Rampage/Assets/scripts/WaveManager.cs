@@ -11,29 +11,39 @@ public class WaveManager : ScriptableObject
     [SerializeField] float delaySpawnTime = 1.0f;
 
     //encapsulate all
-    public GameObject GetobstaclePrefab() 
+    public GameObject GetobstaclePrefab
     {
-        return obstaclePrefab;
+        get { return obstaclePrefab; }
+        set { obstaclePrefab = value; }
     }
-    public List<Transform> GetpathPrefab() 
+    public List<Transform> GetpathPrefab 
     {
-        List<Transform> wavePathList = new List<Transform>();
-        foreach (Transform waypoint in pathPrefab.transform) 
+        get 
         {
-            wavePathList.Add(waypoint);
+            List<Transform> wavePathList = new List<Transform>();
+            foreach (Transform waypoint in pathPrefab.transform)
+            {
+                wavePathList.Add(waypoint);
+            }
+            return wavePathList;
         }
-        return wavePathList;
     }
-    public int GetnumberOfObstacleToSpawn() 
+    public int GetnumberOfObstacleToSpawn
     {
-        return numberOfObstacleToSpawn;
+        get { return numberOfObstacleToSpawn; }
+        set { numberOfObstacleToSpawn = value; }
+       
     }
-    public float GetdelaySpawnTime() 
+    public float GetdelaySpawnTime 
     {
-        return delaySpawnTime;
+        get { return delaySpawnTime; }
+        set { delaySpawnTime = value; }
+        
     }
-    public float GetobstacleMovementSpeed() 
+    public float GetobstacleMovementSpeed 
     {
-        return obstacleMovementSpeed;
+        get { return obstacleMovementSpeed; }
+        set { obstacleMovementSpeed = value; }
+        
     }
 }

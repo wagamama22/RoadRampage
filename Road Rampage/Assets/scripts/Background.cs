@@ -9,15 +9,17 @@ public class Background : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //access the background material
         backgroundMaterial = GetComponent<Renderer>().material;
-        
-
-        offset = new Vector2(0f, scrollingSpeed);
+        //assign value to offset by initialising it
+        offset = Vector2.up * scrollingSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        backgroundMaterial.mainTextureOffset += offset * Time.deltaTime;
+        //make the background to start scrolling
+        Vector2 movement = offset * Time.deltaTime;
+        backgroundMaterial.mainTextureOffset += movement;
     }
 }

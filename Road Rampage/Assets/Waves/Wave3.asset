@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3beeaf7d565dad84e99f8374659d3a8a, type: 3}
-  m_Name: Wave3 1
+  m_Name: Wave3
   m_EditorClassIdentifier: 
-  waveManager: {fileID: 0}
-  obstaclePrefab: {fileID: 0}
-  pathPrefab: {fileID: 0}
+  obstacleMovementSpeed: 3
+  obstaclePrefab: {fileID: 355528627660369937, guid: 6ca38f53467a0de4593a05af7df41886, type: 3}
+  pathPrefab: {fileID: 1699060789952073639, guid: 3c9adbcaaf3684a4b8a05327bdbca9ec, type: 3}
   numberOfObstacleToSpawn: 5
   delaySpawnTime: 1

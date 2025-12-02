@@ -3,8 +3,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 5f;
-    Vector2 moveX;
+    Vector2 movement;
     Camera gameCamera;
+    float moveX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,10 +16,12 @@ public class Player : MonoBehaviour
     void MovePlayer() 
     {
         //getting user input
-        float inputX = Input.GetAxis("Horizontal");
+        moveX = Input.GetAxis("Horizontal");
         //player movement iin x-axis without clamping
-        moveX = new Vector2(inputX, 0f) * playerSpeed * Time.deltaTime;
-        transform.Translate(moveX);
+        movement = Vector2.zero;//nitialize to zero:
+        movement.x = moveX;
+        movement *= playerSpeed * Time.deltaTime;
+        transform.Translate(movement);
 
         //creating boundary for player movement along x axis
         Vector3 playerMoveBoundary = gameCamera.WorldToViewportPoint(transform.position);
