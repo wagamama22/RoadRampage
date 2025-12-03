@@ -16,7 +16,7 @@ public class WaveManager : ScriptableObject
         get { return obstaclePrefab; }
         set { obstaclePrefab = value; }
     }
-    public List<Transform> GetpathPrefab 
+    public List<Transform> GetPathPrefab
     {
         get 
         {
