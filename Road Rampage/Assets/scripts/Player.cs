@@ -6,6 +6,39 @@ public class Player : MonoBehaviour
     Vector2 movement;
     Camera gameCamera;
     float moveX;
+    [SerializeField] int health = 100;
+    DestroyAny destroyAny;
+
+    private void Awake()
+    {
+        destroyAny = GetComponent<DestroyAny>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
+
+        if (damageDealer != null)
+        {
+            string obstacleName = collision.gameObject.name;
+            Debug.Log("Collided with: " + obstacleName);
+
+            int damage = damageDealer.GetDamage(obstacleName); // new method
+            health -= damage;
+            Debug.Log("Damage received: " + damage);
+
+            if (health <= 0)
+            {
+                destroyAny.GetDamageAttached();//destroy the gameObject
+                damageDealer.Hit();//destroy the damage dealer when player is dead
+            }
+            else
+            {
+                damageDealer.OnHit();//destroys the damagedealer component when it collides with the player and the player is still alife
+            }
+        }
+
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
