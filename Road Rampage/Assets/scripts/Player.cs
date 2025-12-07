@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
         destroyAny = GetComponent<DestroyAny>();
     }
 
+    //Method that reads damage from damageDealer carrier gameObject
     private void OnCollisionEnter2D(Collision2D collision)
     {
         DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
             if (health <= 0)
             {
                 destroyAny.GetDamageAttached();//destroy the gameObject
-                damageDealer.Hit();//destroy the damage dealer when player is dead
+                damageDealer.Hit();//destroy the damageDealer gameObject when player is dead
             }
             else
             {
@@ -61,6 +62,29 @@ public class Player : MonoBehaviour
         playerMoveBoundary.x = Mathf.Clamp(playerMoveBoundary.x, 0.04f, 0.97f);
         transform.position = gameCamera.ViewportToWorldPoint(playerMoveBoundary);
 
+    }
+
+    //method to add extra health points by pointGivers
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        PointGiver pointGiver = collision.gameObject.GetComponent<PointGiver>();
+
+        if (pointGiver != null)
+        {
+            int life = pointGiver.GetHealth(); // new method
+            health += life;
+            Debug.Log("health received: " + life);
+
+            if (health <= 0)
+            {
+                GetComponent<DestroyAny>().GetDamageAttached();
+                pointGiver.Hit();
+            }
+            else
+            {
+                pointGiver.Hit();
+            }
+        }
     }
 
     // Update is called once per frame
