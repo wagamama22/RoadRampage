@@ -1,48 +1,79 @@
+using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] int health = 1;
+    //[SerializeField] int health = 1;
     DestroyAny destroyAny;
+    GameObject obstacleBullet;
+    [SerializeField] GameObject enemyBulletPrefab;
+    IEnumerator obstacleShots;
+    [SerializeField] float minimumTimeBeforeShots = 0.01f;
+    [SerializeField] float maximumTimeBeforeShots = 2f;
+    [SerializeField] float countDownCounter;
+    bool canShoot = false;
 
     private void Awake()
     {
         destroyAny = GetComponent<DestroyAny>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
-        if (damageDealer == null) return;
-
-        string attackerName = collision.gameObject.name;
-        int damage = damageDealer.GetDamage(attackerName);
-        Debug.Log("Enemy hit by: " + attackerName + " | Damage: " + damage);
-
-        health -= damage;
-
-        if (health <= 0)
-        {
-            destroyAny.GetDamageAttached();
-            damageDealer.Hit();
-        }
-        else
-        {
-            damageDealer.OnHit();
-        }
-
-    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        obstacleShots = SteadyEnemyShooting();
+        countDownCounter = Random.Range(minimumTimeBeforeShots, maximumTimeBeforeShots);
+    }
 
+    public void SetCanShoot(bool value)
+    {
+        canShoot = value;
+    }
+
+    IEnumerator SteadyEnemyShooting()
+    {
+        while (true)
+        {
+            float laserDisplacement = 0.899f; //distance of the spawn laser from the tip of the player
+            var obstaclePosition = transform.position;
+            obstaclePosition.y -= laserDisplacement;
+            obstacleBullet = Instantiate(enemyBulletPrefab, obstaclePosition, Quaternion.identity);
+            obstacleBullet.GetComponent<Rigidbody2D>().linearVelocityY = -3f;
+            //Destroy(laser, 5f);//destroys laser after 5 seconds
+
+
+            //applying delay that coroutine is known for
+            yield return new WaitForSeconds(countDownCounter);
+        }
+    }
+
+    void EnemyShootNow()
+    {
+        countDownCounter -= Time.deltaTime;
+        if (countDownCounter <= 0)
+        {
+            StartCoroutine(obstacleShots);
+            //reset the counter
+            countDownCounter = Random.Range(minimumTimeBeforeShots, maximumTimeBeforeShots);
+        }
+        else
+        {
+            StopCoroutine(obstacleShots);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (canShoot)
+        {
+            // shooting logic here
+            EnemyShootNow();
+        }
+       
 
     }
 }

@@ -44,6 +44,13 @@ public class ObstacleSpawner : MonoBehaviour
             // Spawn object from the first/starting path
             Vector3 spawnPosition = pathPrefabs[0].transform.position;
             GameObject newObstacle = Instantiate(waveManager.GetobstaclePrefab, spawnPosition, Quaternion.identity);
+            Obstacle obstaclsScript = newObstacle.GetComponent<Obstacle>();
+
+            if (obstaclsScript != null)
+            {
+
+                obstaclsScript.SetCanShoot(waveManager.GetObstaclesCanShoot());
+            }
             newObstacle.transform.position = spawnPosition; // Force position before first render
             obstacleCount++;
 

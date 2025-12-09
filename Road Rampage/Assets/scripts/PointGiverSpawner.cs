@@ -11,12 +11,32 @@ public class PointGiverSpawner : MonoBehaviour
     [SerializeField] float maximumX = 3f;
     int direction = 1; // 1 = moving right, -1 = moving left
     float pointGiverAcceleration = 2f;
+    [SerializeField] WaveManager waveManager;
+    [SerializeField] WaveManager waveManager3;
 
 
     void Start()
     {
         spawnNewPointGiverNow = SpawnNow();// assigning value to the variable
         spawnTimeCounter = Random.Range(pointGiverManager.GetMaximumTimeToSpawn(), pointGiverManager.GetMaximumTimeToSpawn());
+    }
+
+    public void EnableObstaclesShooting()
+    {
+        if (waveManager != null && waveManager3 != null)
+        {
+            waveManager.EnableObstaclesShooting();
+            waveManager3.EnableObstaclesShooting();
+        }
+    }
+
+    public void DisableObstaclesShooting()
+    {
+        if (waveManager != null && waveManager3 != null)
+        {
+            waveManager.DisableObstaclesShooting();
+            waveManager3.DisableObstaclesShooting();
+        }
     }
 
 
@@ -57,9 +77,30 @@ public class PointGiverSpawner : MonoBehaviour
             //reset the counter
             spawnTimeCounter = Random.Range(pointGiverManager.GetMaximumTimeToSpawn(), pointGiverManager.GetMaximumTimeToSpawn());
         }
-        else
+        else if (spawnCounter >= 10)
         {
-            StopCoroutine(spawnNewPointGiverNow);
+            LevelManager levelManager = FindFirstObjectByType<LevelManager>();
+            // Notify WaveManager
+            if (waveManager != null && waveManager3 != null && levelManager != null)
+            {
+                levelManager.LoadSceneWithDelay("Level1");
+                waveManager.EnableObstaclesShooting();
+                waveManager3.EnableObstaclesShooting();
+            }
+
+        }
+        else if (spawnCounter > 10 && spawnCounter < 20)
+        {
+            LevelManager levelManager = FindFirstObjectByType<LevelManager>();
+            // Notify WaveManager
+            if (waveManager != null && waveManager3 != null && levelManager != null)
+            {
+                waveManager.DisableObstaclesShooting();
+                waveManager3.DisableObstaclesShooting();
+                levelManager.LoadSceneByName("RoadRampage");
+
+            }
+
         }
     }
 

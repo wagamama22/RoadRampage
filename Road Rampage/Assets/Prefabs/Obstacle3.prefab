@@ -181,7 +181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b9c267d6fc044478549035186fba1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  enemyBulletPrefab: {fileID: 8102325080594191288, guid: c32592ef9feab4f409cc7efd30be1749, type: 3}
+  minimumTimeBeforeShots: 0.01
+  maximumTimeBeforeShots: 2
+  countDownCounter: 0
 --- !u!61 &-8427606524654363606
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -7,14 +7,10 @@ public class Player : MonoBehaviour
     Camera gameCamera;
     float moveX;
     [SerializeField] int health = 100;
-    DestroyAny destroyAny;
+    
 
-    private void Awake()
-    {
-        destroyAny = GetComponent<DestroyAny>();
-    }
-
-    //Method that reads damage from damageDealer carrier gameObject
+  
+    //Method that reads damage from damageDealer carrier gameObject by type obstacle
     private void OnCollisionEnter2D(Collision2D collision)
     {
         DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
@@ -30,7 +26,7 @@ public class Player : MonoBehaviour
 
             if (health <= 0)
             {
-                destroyAny.GetDamageAttached();//destroy the gameObject
+                GetComponent<DestroyAny>().GetDamageAttached();//destroy the gameObject
                 damageDealer.Hit();//destroy the damageDealer gameObject when player is dead
             }
             else
@@ -64,28 +60,43 @@ public class Player : MonoBehaviour
 
     }
 
-    //method to add extra health points by pointGivers
+    //method to add extra health points by pointGivers and read damage from the obstacle bullets
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Check for PointGiver
         PointGiver pointGiver = collision.gameObject.GetComponent<PointGiver>();
-
         if (pointGiver != null)
         {
-            int life = pointGiver.GetHealth(); // new method
+            int life = pointGiver.GetHealth();
             health += life;
-            Debug.Log("health received: " + life);
+            Debug.Log("Health received: " + life);
+
+            pointGiver.Hit(); // pickup consumed
+            return; // exit early, no need to check damage
+        }
+
+        // Check for DamageDealer from obstacle bullet
+        DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
+        if (damageDealer != null)
+        {
+            string attackerName = collision.gameObject.name;
+            int damage = damageDealer.GetDamage(attackerName);
+            Debug.Log("Hit by: " + attackerName + " | Damage: " + damage);
+
+            health -= damage;
 
             if (health <= 0)
             {
                 GetComponent<DestroyAny>().GetDamageAttached();
-                pointGiver.Hit();
+                damageDealer.Hit();
             }
             else
             {
-                pointGiver.Hit();
+                damageDealer.OnHit();
             }
         }
     }
+
 
     // Update is called once per frame
     void Update()

@@ -9,6 +9,25 @@ public class WaveManager : ScriptableObject
     [SerializeField] GameObject pathPrefab;
     [SerializeField] int numberOfObstacleToSpawn = 5;
     [SerializeField] float delaySpawnTime = 1.0f;
+    [SerializeField] bool obstaclesCanShoot = false;
+
+
+    public bool GetObstaclesCanShoot()
+    {
+        return obstaclesCanShoot;
+    }
+    // Called by PointGiverSpawner when threshold reached
+    public void EnableObstaclesShooting()
+    {
+        obstaclesCanShoot = true;
+        Debug.Log("WaveManager: obstacles can now shoot!");
+    }
+
+    public void DisableObstaclesShooting()
+    {
+        obstaclesCanShoot = false;
+        Debug.Log("WaveManager: obstacles cannot shoot now");
+    }
 
     //encapsulate all
     public GameObject GetobstaclePrefab
