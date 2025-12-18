@@ -181,10 +181,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b9c267d6fc044478549035186fba1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
   enemyBulletPrefab: {fileID: 8102325080594191288, guid: c32592ef9feab4f409cc7efd30be1749, type: 3}
   minimumTimeBeforeShots: 0.01
   maximumTimeBeforeShots: 2
   countDownCounter: 0
+  explosionVFX: {fileID: 5943206216075847786, guid: af7a01b7fbe6b384d8274e3f73ff9e31, type: 3}
+  explosionTime: 1
+  destroyObstacleSound: {fileID: 8300000, guid: e0e1b35b99238484aac450130b215ca2, type: 3}
+  destroyObstacleSoundVolume: 0.8
+  ObstacleShootSound: {fileID: 8300000, guid: abcc7cc7931c57f4fa7dea6d5197c925, type: 3}
+  ObstacleShootSoundVolume: 0.8
 --- !u!61 &3618725221500523633
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    //[SerializeField] int health = 1;
+    [SerializeField] int health = 1;
     DestroyAny destroyAny;
     GameObject obstacleBullet;
     [SerializeField] GameObject enemyBulletPrefab;
@@ -14,6 +14,9 @@ public class Obstacle : MonoBehaviour
     [SerializeField] float maximumTimeBeforeShots = 2f;
     [SerializeField] float countDownCounter;
     bool canShoot = false;
+    [SerializeField] AudioClip ObstacleShootSound;
+    [SerializeField][Range(0, 1)] float ObstacleShootSoundVolume = 0.8f;
+
 
     private void Awake()
     {
@@ -27,6 +30,7 @@ public class Obstacle : MonoBehaviour
         obstacleShots = SteadyEnemyShooting();
         countDownCounter = Random.Range(minimumTimeBeforeShots, maximumTimeBeforeShots);
     }
+   
 
     public void SetCanShoot(bool value)
     {

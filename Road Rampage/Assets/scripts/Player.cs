@@ -7,9 +7,21 @@ public class Player : MonoBehaviour
     Camera gameCamera;
     float moveX;
     [SerializeField] int health = 100;
-    
+    [SerializeField] GameObject explosionVFX;
+    [SerializeField] float explosionTime = 1f;
+    [SerializeField] AudioClip destroyObstacleSound;
+    [SerializeField][Range(0, 1)] float destroyObstacleSoundVolume = 0.8f;
+    [SerializeField] AudioClip destroyPlayerSound;
+    [SerializeField][Range(0, 1)] float destroyPlayerSoundVolume = 0.8f;
+    [SerializeField] AudioClip destroyPointGiverSound;
+    [SerializeField][Range(0, 1)] float destroyPointGiverSoundVolume = 0.8f;
+    [SerializeField] AudioClip playerMoveSound;
+    [SerializeField][Range(0, 1)] float playerMoveSoundVolume = 0.8f;
+    [SerializeField] AudioClip playerDeathSound;
+    [SerializeField][Range(0, 1)] float playerDeathSoundVolume = 0.8f;
 
-  
+
+
     //Method that reads damage from damageDealer carrier gameObject by type obstacle
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -22,6 +34,10 @@ public class Player : MonoBehaviour
 
             int damage = damageDealer.GetDamage(obstacleName); // new method
             health -= damage;
+            GameObject explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
+            Destroy(explosion, explosionTime);
+            //play sound obstacle destroy sound on collision with player
+            AudioSource.PlayClipAtPoint(destroyPlayerSound, Camera.main.transform.position, destroyPlayerSoundVolume);
             Debug.Log("Damage received: " + damage);
 
             if (health <= 0)
@@ -52,6 +68,11 @@ public class Player : MonoBehaviour
         movement.x = moveX;
         movement *= playerSpeed * Time.deltaTime;
         transform.Translate(movement);
+        //Play move sound only if moving
+        if (moveX != 0  && playerMoveSound != null)
+        {
+            AudioSource.PlayClipAtPoint(playerMoveSound, Camera.main.transform.position, playerMoveSoundVolume);
+        }
 
         //creating boundary for player movement along x axis
         Vector3 playerMoveBoundary = gameCamera.WorldToViewportPoint(transform.position);
@@ -69,6 +90,8 @@ public class Player : MonoBehaviour
         {
             int life = pointGiver.GetHealth();
             health += life;
+            //play sound
+            AudioSource.PlayClipAtPoint(destroyPointGiverSound, Camera.main.transform.position, destroyPointGiverSoundVolume);
             Debug.Log("Health received: " + life);
 
             pointGiver.Hit(); // pickup consumed
@@ -84,9 +107,14 @@ public class Player : MonoBehaviour
             Debug.Log("Hit by: " + attackerName + " | Damage: " + damage);
 
             health -= damage;
+            GameObject explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
+            Destroy(explosion, explosionTime);
+            //play sound
+            AudioSource.PlayClipAtPoint(playerDeathSound, Camera.main.transform.position, playerDeathSoundVolume);
 
             if (health <= 0)
             {
+                
                 GetComponent<DestroyAny>().GetDamageAttached();
                 damageDealer.Hit();
             }
