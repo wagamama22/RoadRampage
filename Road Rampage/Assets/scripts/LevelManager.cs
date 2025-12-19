@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
+using UnityEditor;
 
 public class LevelManager : MonoBehaviour
 {
@@ -54,4 +56,12 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(delayBeforeLoad);
         SceneManager.LoadScene(sceneName);
     }
+    public void LoadSceneByQuit()
+    {
+        Application.Quit();
+        print("game closed");
+        EditorApplication.isPlaying = false;
+    }
+
 }
+#endif
