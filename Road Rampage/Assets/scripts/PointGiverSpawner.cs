@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PointGiverSpawner : MonoBehaviour
 {
@@ -14,29 +15,43 @@ public class PointGiverSpawner : MonoBehaviour
     [SerializeField] WaveManager waveManager;
     [SerializeField] WaveManager waveManager3;
 
+    private string currentLevel;
+    private LevelManager levelManager;
+
+    void Awake()
+    {
+        spawnCounter = GameState.SpawnCounter;
+        currentLevel = SceneManager.GetActiveScene().name;
+        levelManager = FindFirstObjectByType<LevelManager>();
+
+        if (currentLevel == "RoadRampage")
+        {
+            if (GameState.SpawnCounter > 20 || GameState.SpawnCounter == 0)
+            {
+                GameState.SpawnCounter = 0;
+                spawnCounter = 0;
+                GameState.PlayerHealth = 100;
+                DisableObstaclesShooting();
+            }
+        }
+    }
 
     void Start()
     {
         spawnNewPointGiverNow = SpawnNow();// assigning value to the variable
-        spawnTimeCounter = Random.Range(pointGiverManager.GetMaximumTimeToSpawn(), pointGiverManager.GetMaximumTimeToSpawn());
+        spawnTimeCounter = Random.Range(pointGiverManager.GetMaximumTimeToSpawn(), pointGiverManager.GetMaximumTimeToSpawn() + 1f);
     }
 
     public void EnableObstaclesShooting()
     {
-        if (waveManager != null && waveManager3 != null)
-        {
-            waveManager.EnableObstaclesShooting();
-            waveManager3.EnableObstaclesShooting();
-        }
+        if (waveManager != null) waveManager.EnableObstaclesShooting();
+        if (waveManager3 != null) waveManager3.EnableObstaclesShooting();
     }
 
     public void DisableObstaclesShooting()
     {
-        if (waveManager != null && waveManager3 != null)
-        {
-            waveManager.DisableObstaclesShooting();
-            waveManager3.DisableObstaclesShooting();
-        }
+        if (waveManager != null) waveManager.DisableObstaclesShooting();
+        if (waveManager3 != null) waveManager3.DisableObstaclesShooting();
     }
 
 
@@ -67,40 +82,41 @@ public class PointGiverSpawner : MonoBehaviour
 
     void SpawnPointGiver()
     {
-        //count down the spawntimecou nter  each frame
-        spawnTimeCounter -= Time.deltaTime;
+        // CRITICAL FIX: Check GameOver FIRST
+        if (spawnCounter >= 20)
+        {
+            if (levelManager != null)
+            {
+                GameState.SpawnCounter = 0;
+                GameState.PlayerHealth = 100;
+                DisableObstaclesShooting();
+                levelManager.LoadSceneByName("GameOver");
+            }
+            return;
+        }
 
-        if (spawnTimeCounter <= 0 && spawnCounter < 10)
+        // Spawn logic SECOND
+        spawnTimeCounter -= Time.deltaTime;
+        if (spawnTimeCounter <= 0 && spawnCounter < 20)
         {
             StartCoroutine(spawnNewPointGiverNow);
             spawnCounter++;
-            //reset the counter
-            spawnTimeCounter = Random.Range(pointGiverManager.GetMaximumTimeToSpawn(), pointGiverManager.GetMaximumTimeToSpawn());
+            GameState.SpawnCounter = spawnCounter;
+
+            spawnTimeCounter = Random.Range(
+                pointGiverManager.GetMinimumTimeToSpawn(),
+                pointGiverManager.GetMaximumTimeToSpawn() + 1f
+            );
         }
-        else if (spawnCounter >= 10)
+
+        // Level transition
+        if (spawnCounter == 10 && currentLevel == "RoadRampage")
         {
-            LevelManager levelManager = FindFirstObjectByType<LevelManager>();
-            // Notify WaveManager
-            if (waveManager != null && waveManager3 != null && levelManager != null)
+            if (levelManager != null)
             {
+                EnableObstaclesShooting();
                 levelManager.LoadSceneWithDelay("Level1");
-                waveManager.EnableObstaclesShooting();
-                waveManager3.EnableObstaclesShooting();
             }
-
-        }
-        else if (spawnCounter > 10 && spawnCounter < 20)
-        {
-            LevelManager levelManager = FindFirstObjectByType<LevelManager>();
-            // Notify WaveManager
-            if (waveManager != null && waveManager3 != null && levelManager != null)
-            {
-                waveManager.DisableObstaclesShooting();
-                waveManager3.DisableObstaclesShooting();
-                levelManager.LoadSceneByName("RoadRampage");
-
-            }
-
         }
     }
 
@@ -125,4 +141,10 @@ public class PointGiverSpawner : MonoBehaviour
         SpawnPointGiver();
 
     }
+
+    void OnDestroy()
+    {
+        GameState.SpawnCounter = spawnCounter;
+    }
+
 }

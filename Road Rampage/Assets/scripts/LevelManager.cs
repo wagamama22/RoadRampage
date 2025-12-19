@@ -1,8 +1,7 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-#if UNITY_EDITOR
-using UnityEditor;
 
 public class LevelManager : MonoBehaviour
 {
@@ -60,8 +59,9 @@ public class LevelManager : MonoBehaviour
     {
         Application.Quit();
         print("game closed");
-        EditorApplication.isPlaying = false;
+    #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+    #endif
     }
 
 }
-#endif
