@@ -1,7 +1,8 @@
 using TMPro;
-using UnityEngine;
-using UnityEngine.UI; // For Text
 using TMPro;
+using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.UI; // For Text
 
 public class Player : MonoBehaviour
 {
@@ -74,7 +75,7 @@ public class Player : MonoBehaviour
             {
                 GetComponent<DestroyAny>().GetDamageAttached();//destroy the gameObject
                 damageDealer.Hit();//destroy the damageDealer gameObject when player is dead
-                levelManager.LoadSceneByName("GameOver");
+                levelManager.LoadGameOver();
             }
             else
             {
@@ -147,7 +148,7 @@ public class Player : MonoBehaviour
                 
                 GetComponent<DestroyAny>().GetDamageAttached();
                 damageDealer.Hit();
-                levelManager.LoadSceneByName("GameOver");
+                levelManager.LoadGameOver();
             }
             else
             {
