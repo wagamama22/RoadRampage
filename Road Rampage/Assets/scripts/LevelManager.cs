@@ -3,12 +3,18 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public static class LastLevelTracker
+{
+    // Stores the last level the player was actually playing
+    public static int LastPlayedIndex = -1;
+}
+
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] float delayBeforeLoad = 2f; // seconds before loading next scene
-    [SerializeField] string gameOverSceneName = "GameOver"; // name of GameOver scene
+    [SerializeField] float delayBeforeLoad = 2f;
+    [SerializeField] string gameOverSceneName = "GameOver";
 
-    // Load next level in build order
+    //  Load next level in build order
     public void LoadNextLevel()
     {
         int currentIndex = SceneManager.GetActiveScene().buildIndex;
@@ -21,33 +27,48 @@ public class LevelManager : MonoBehaviour
         else
         {
             Debug.Log("No more levels. Returning to main menu.");
-            SceneManager.LoadScene(0); // load first scene (menu)
+            SceneManager.LoadScene(0);
         }
     }
 
-    // Restart current level
+    // Restart the last played level
     public void RestartLevel()
     {
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentIndex);
+        // Safety check — if somehow nothing was saved, avoid crashing
+        if (LastLevelTracker.LastPlayedIndex < 0)
+        {
+            Debug.LogWarning("No last played level saved. Loading menu instead.");
+            SceneManager.LoadScene(0);
+            return;
+        }
+
+        SceneManager.LoadScene(LastLevelTracker.LastPlayedIndex);
     }
 
-    // Load Game Over scene
+    //  Load Game Over and SAVE the last played level
     public void LoadGameOver()
     {
+        // Save the level the player was on BEFORE GameOver
+        LastLevelTracker.LastPlayedIndex = SceneManager.GetActiveScene().buildIndex;
+
         SceneManager.LoadScene(gameOverSceneName);
     }
 
-    // Load any scene by name
-    public void LoadSceneByName(string RoadRampage)
+    //  Load any scene by name (manual navigation)
+    public void LoadSceneByName(string sceneName)
     {
-        SceneManager.LoadScene(RoadRampage);
+        SceneManager.LoadScene(sceneName);
     }
 
-    // Delayed load (useful for death animations)
-    public void LoadSceneWithDelay(string Level1)
+    public void LoadSceneName(string sceneName)
     {
-        StartCoroutine(LoadAfterDelay(Level1));
+        SceneManager.LoadScene(sceneName);
+    }
+
+    //  Delayed load (death animations, transitions)
+    public void LoadSceneWithDelay(string sceneName)
+    {
+        StartCoroutine(LoadAfterDelay(sceneName));
     }
 
     private IEnumerator LoadAfterDelay(string sceneName)
@@ -55,13 +76,15 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(delayBeforeLoad);
         SceneManager.LoadScene(sceneName);
     }
+
+    //  Quit game
     public void LoadSceneByQuit()
     {
         Application.Quit();
-        print("game closed");
-    #if UNITY_EDITOR
-            EditorApplication.isPlaying = false;
-    #endif
-    }
+        Debug.Log("Game closed");
 
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#endif
+    }
 }

@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 1471633689}
   - component: {fileID: 1471633688}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,14 +322,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5882544837742423209, guid: 02d5f346acda0ba4d831d7fa8607eb2e, type: 3}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: LoadNextLevel
-        m_Mode: 1
+        m_MethodName: LoadSceneName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: StartGame
           m_BoolArgument: 0
         m_CallState: 1
 --- !u!114 &1471633689
@@ -514,11 +514,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1708169730310879064, guid: d07515b4b309f1c4b88950f6f92df781, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1708169730310879064, guid: d07515b4b309f1c4b88950f6f92df781, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadSceneByName
+      value: RestartLevel
       objectReference: {fileID: 0}
     - target: {fileID: 1708169730310879064, guid: d07515b4b309f1c4b88950f6f92df781, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -611,6 +611,10 @@ PrefabInstance:
     - target: {fileID: 3274298907294159001, guid: d07515b4b309f1c4b88950f6f92df781, type: 3}
       propertyPath: m_fontSize
       value: 52.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052700141101138792, guid: d07515b4b309f1c4b88950f6f92df781, type: 3}
+      propertyPath: m_Name
+      value: ReStart
       objectReference: {fileID: 0}
     - target: {fileID: 7212339487956797694, guid: d07515b4b309f1c4b88950f6f92df781, type: 3}
       propertyPath: m_Name
