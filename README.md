@@ -14,7 +14,9 @@ The game demonstrates:
 •	Scene transitions
 •	Asset integration
 The project reflects core software engineering principles applied in a game development environment.
+
 Key Features
+
 1. Player Movement & Controls
 •	Smooth horizontal and vertical movement
 •	Acceleration and deceleration logic
