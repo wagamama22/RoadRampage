@@ -17,6 +17,7 @@ Gameplay GIF (Short Demo)
 https://github.com/wagamama22/RoadRampage/blob/main/assets/rr.gif
 
 Overview
+
 Road Rampage is a simple but engaging 2D racing game where the player controls a vehicle navigating obstacles, collecting items, and avoiding collisions. The game demonstrates:
 •	Player movement & physics
 •	Collision detection
@@ -55,12 +56,15 @@ Key Features
 •	Demonstrates object oriented programming fundamentals
 
 Tech Stack
+
 Game Engine:	Unity
 Programming Language:	C#
 Graphics:	Unity 2D sprites
 Tools:	Visual Studio Code / Unity Editor
 Version Control:	Git + GitHub
+
 How to Run the Game
+
 1. Clone the repository
 Code
 git clone https://github.com/wagamama22/RoadRampage.git
