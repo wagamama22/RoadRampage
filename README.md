@@ -1,11 +1,18 @@
 # Road Rampage – Logic Based Simulation Game (Academic Project)
 A fast paced 2D racing game built using Unity and C#, designed as part of an academic assignment to demonstrate game development fundamentals, physics simulation, UI design, and object oriented programming.
 This project highlights my ability to build interactive digital experiences, implement gameplay mechanics, and structure clean, maintainable code.
+Game Preview
+Main Menu
+https://github.com/wagamama22/RoadRampage/blob/main/assets/rr-menu.png
+Gameplay Screenshot
+https://github.com/wagamama22/RoadRampage/blob/main/assets/rr-game.png
+Game Over Screen
+https://github.com/wagamama22/RoadRampage/blob/main/assets/rr-gameover.png
+Gameplay GIF (Short Demo)
+https://github.com/wagamama22/RoadRampage/blob/main/assets/rr.gif
 
 Overview
-
-Road Rampage is a simple but engaging 2D racing game where the player controls a vehicle navigating obstacles, collecting items, and avoiding collisions. 
-The game demonstrates:
+Road Rampage is a simple but engaging 2D racing game where the player controls a vehicle navigating obstacles, collecting items, and avoiding collisions. The game demonstrates:
 •	Player movement & physics
 •	Collision detection
 •	Score tracking
@@ -14,9 +21,7 @@ The game demonstrates:
 •	Scene transitions
 •	Asset integration
 The project reflects core software engineering principles applied in a game development environment.
-
 Key Features
-
 1. Player Movement & Controls
 •	Smooth horizontal and vertical movement
 •	Acceleration and deceleration logic
@@ -45,22 +50,15 @@ Key Features
 •	Demonstrates object oriented programming fundamentals
 
 Tech Stack
-
 Game Engine:	Unity
-
 Programming Language:	C#
-
 Graphics:	Unity 2D sprites
-
 Tools:	Visual Studio Code / Unity Editor
-
 Version Control:	Git + GitHub
-
 How to Run the Game
-
 1. Clone the repository
 Code
-git clone https://github.com/wagamama22/SchoolAssignment.git
+git clone https://github.com/wagamama22/RoadRampage.git
 2. Open the project
 •	Launch Unity Hub
 •	Click Open Project
@@ -68,4 +66,3 @@ git clone https://github.com/wagamama22/SchoolAssignment.git
 3. Run the game
 •	Open the Game scene
 •	Press Play in the Unity Editor
-
