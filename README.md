@@ -58,9 +58,13 @@ Key Features
 Tech Stack
 
 Game Engine:	Unity
+
 Programming Language:	C#
+
 Graphics:	Unity 2D sprites
+
 Tools:	Visual Studio Code / Unity Editor
+
 Version Control:	Git + GitHub
 
 How to Run the Game
