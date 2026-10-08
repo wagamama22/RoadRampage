@@ -1,13 +1,18 @@
 # Road Rampage – Logic Based Simulation Game (Academic Project)
 A fast paced 2D racing game built using Unity and C#, designed as part of an academic assignment to demonstrate game development fundamentals, physics simulation, UI design, and object oriented programming.
 This project highlights my ability to build interactive digital experiences, implement gameplay mechanics, and structure clean, maintainable code.
+
 Game Preview
+
 Main Menu
 https://github.com/wagamama22/RoadRampage/blob/main/assets/rr-menu.png
+
 Gameplay Screenshot
 https://github.com/wagamama22/RoadRampage/blob/main/assets/rr-game.png
+
 Game Over Screen
 https://github.com/wagamama22/RoadRampage/blob/main/assets/rr-gameover.png
+
 Gameplay GIF (Short Demo)
 https://github.com/wagamama22/RoadRampage/blob/main/assets/rr.gif
 
