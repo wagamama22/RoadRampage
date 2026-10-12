@@ -46,8 +46,7 @@ The project reflects core software engineering principles applied in a game deve
 
   •	Responsive input handling using Unity’s Input System
   
-
-3. Collision Detection
+2 Collision Detection
 
   •	Detects collisions with obstacles
 
@@ -55,7 +54,7 @@ The project reflects core software engineering principles applied in a game deve
 
   •	Uses Unity’s physics engine (2D colliders & rigidbodies)
 
-5. Scoring System
+3 Scoring System
 
   •	Score increases as player progresses
 
@@ -63,7 +62,7 @@ The project reflects core software engineering principles applied in a game deve
 
   •	Score displayed in real time on UI
 
-7. Game States
+4 Game States
 
   •	Start screen
 
@@ -73,7 +72,7 @@ The project reflects core software engineering principles applied in a game deve
 
   •	Restart functionality
 
-9. UI & Visual Design
+5 UI & Visual Design
 
   •	Clean, simple UI layout
 
@@ -83,7 +82,7 @@ The project reflects core software engineering principles applied in a game deve
 
   •	Scene transitions
 
-11. Modular Code Structure
+6 Modular Code Structure
 
   •	Separate scripts for movement, scoring, collisions, and UI
 
@@ -105,11 +104,11 @@ Version Control:	Git + GitHub
 
 # How to Run the Game
 
-1. Clone the repository Code
+1 Clone the repository Code
 
   git clone https://github.com/wagamama22/RoadRampage.git
 
-3. Open the project
+2 Open the project
 
   •	Launch Unity Hub
 
@@ -117,7 +116,7 @@ Version Control:	Git + GitHub
 
   •	Select the Road Rampage folder
 
-5. Run the game
+3 Run the game
 
   •	Open the Game scene
 
