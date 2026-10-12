@@ -45,6 +45,7 @@ The project reflects core software engineering principles applied in a game deve
   •	Acceleration and deceleration logic
 
   •	Responsive input handling using Unity’s Input System
+  
 
 3. Collision Detection
 
