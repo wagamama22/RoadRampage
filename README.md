@@ -39,55 +39,55 @@ The project reflects core software engineering principles applied in a game deve
 # Key Features
 
 1. Player Movement & Controls
-•	Smooth horizontal and vertical movement
+  •	Smooth horizontal and vertical movement
 
-•	Acceleration and deceleration logic
+  •	Acceleration and deceleration logic
 
-•	Responsive input handling using Unity’s Input System
+  •	Responsive input handling using Unity’s Input System
 
 3. Collision Detection
 
-•	Detects collisions with obstacles
+  •	Detects collisions with obstacles
 
-•	Reduces player health or ends game
+  •	Reduces player health or ends game
 
-•	Uses Unity’s physics engine (2D colliders & rigidbodies)
+  •	Uses Unity’s physics engine (2D colliders & rigidbodies)
 
 5. Scoring System
 
-•	Score increases as player progresses
+  •	Score increases as player progresses
 
-•	Collectible items add bonus points
+  •	Collectible items add bonus points
 
-•	Score displayed in real time on UI
+  •	Score displayed in real time on UI
 
 7. Game States
 
-•	Start screen
+  •	Start screen
 
-•	Active gameplay
+  •	Active gameplay
 
-•	Game over screen
+  •	Game over screen
 
-•	Restart functionality
+  •	Restart functionality
 
 9. UI & Visual Design
 
-•	Clean, simple UI layout
+  •	Clean, simple UI layout
 
-•	Health bar or lives indicator
+  •	Health bar or lives indicator
 
-•	Score counter
+  •	Score counter
 
-•	Scene transitions
+  •	Scene transitions
 
 11. Modular Code Structure
 
-•	Separate scripts for movement, scoring, collisions, and UI
+  •	Separate scripts for movement, scoring, collisions, and UI
 
-•	Easy to extend or modify
+  •	Easy to extend or modify
 
-•	Demonstrates object oriented programming fundamentals
+  •	Demonstrates object oriented programming fundamentals
 
 # Tech Stack
 
@@ -106,18 +106,18 @@ Version Control:	Git + GitHub
 1. Clone the repository
 Code
 
-git clone https://github.com/wagamama22/RoadRampage.git
+  git clone https://github.com/wagamama22/RoadRampage.git
 
 3. Open the project
 
-•	Launch Unity Hub
+  •	Launch Unity Hub
 
-•	Click Open Project
+  •	Click Open Project
 
-•	Select the Road Rampage folder
+  •	Select the Road Rampage folder
 
 5. Run the game
 
-•	Open the Game scene
+  •	Open the Game scene
 
-•	Press Play in the Unity Editor
+  •	Press Play in the Unity Editor
