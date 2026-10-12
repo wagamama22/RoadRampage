@@ -2,7 +2,7 @@
 A fast paced 2D racing game built using Unity and C#, designed as part of an academic assignment to demonstrate game development fundamentals, physics simulation, UI design, and object oriented programming.
 This project highlights my ability to build interactive digital experiences, implement gameplay mechanics, and structure clean, maintainable code.
 
-Game Preview
+# Game Preview
 
 Main Menu
 https://github.com/wagamama22/RoadRampage/blob/main/assets/rr-menu.png
@@ -16,7 +16,7 @@ https://github.com/wagamama22/RoadRampage/blob/main/assets/rr-gameover.png
 Gameplay GIF (Short Demo)
 https://github.com/wagamama22/RoadRampage/blob/main/assets/rr.gif
 
-Overview
+# Overview
 
 Road Rampage is a simple but engaging 2D racing game where the player controls a vehicle navigating obstacles, collecting items, and avoiding collisions. The game demonstrates:
 •	Player movement & physics
@@ -27,7 +27,9 @@ Road Rampage is a simple but engaging 2D racing game where the player controls a
 •	Scene transitions
 •	Asset integration
 The project reflects core software engineering principles applied in a game development environment.
-Key Features
+
+# Key Features
+
 1. Player Movement & Controls
 •	Smooth horizontal and vertical movement
 •	Acceleration and deceleration logic
@@ -55,7 +57,7 @@ Key Features
 •	Easy to extend or modify
 •	Demonstrates object oriented programming fundamentals
 
-Tech Stack
+# Tech Stack
 
 Game Engine:	Unity
 
@@ -67,7 +69,7 @@ Tools:	Visual Studio Code / Unity Editor
 
 Version Control:	Git + GitHub
 
-How to Run the Game
+# How to Run the Game
 
 1. Clone the repository
 Code
