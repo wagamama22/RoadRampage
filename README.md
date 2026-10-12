@@ -48,11 +48,11 @@ The project reflects core software engineering principles applied in a game deve
   
 2 Collision Detection
 
-  •	Detects collisions with obstacles
+          •	Detects collisions with obstacles
 
-  •	Reduces player health or ends game
+          •	Reduces player health or ends game
 
-  •	Uses Unity’s physics engine (2D colliders & rigidbodies)
+          •	Uses Unity’s physics engine (2D colliders & rigidbodies)
 
 3 Scoring System
 
