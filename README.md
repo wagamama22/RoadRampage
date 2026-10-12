@@ -39,6 +39,7 @@ The project reflects core software engineering principles applied in a game deve
 # Key Features
 
 1 Player Movement & Controls
+
   •	Smooth horizontal and vertical movement
 
   •	Acceleration and deceleration logic
