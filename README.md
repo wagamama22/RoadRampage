@@ -40,11 +40,11 @@ The project reflects core software engineering principles applied in a game deve
 
 1 Player Movement & Controls
 
-  •	Smooth horizontal and vertical movement
+        •	Smooth horizontal and vertical movement
 
-  •	Acceleration and deceleration logic
+        •	Acceleration and deceleration logic
 
-  •	Responsive input handling using Unity’s Input System
+        •	Responsive input handling using Unity’s Input System
   
 2 Collision Detection
 
