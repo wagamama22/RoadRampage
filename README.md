@@ -103,8 +103,7 @@ Version Control:	Git + GitHub
 
 # How to Run the Game
 
-1. Clone the repository
-Code
+1. Clone the repository Code
 
   git clone https://github.com/wagamama22/RoadRampage.git
 
