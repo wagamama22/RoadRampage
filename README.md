@@ -8,13 +8,16 @@ This project highlights my ability to build interactive digital experiences, imp
 
 https://github.com/wagamama22/RoadRampage/blob/main/assets/rr-menu.png
 
-Gameplay Screenshot
+### Gameplay Screenshot
+
 https://github.com/wagamama22/RoadRampage/blob/main/assets/rr-game.png
 
-Game Over Screen
+### Game Over Screen
+
 https://github.com/wagamama22/RoadRampage/blob/main/assets/rr-gameover.png
 
-Gameplay GIF (Short Demo)
+### Gameplay GIF (Short Demo)
+
 https://github.com/wagamama22/RoadRampage/blob/main/assets/rr.gif
 
 # Overview
