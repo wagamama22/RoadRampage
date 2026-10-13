@@ -4,7 +4,7 @@ This project highlights my ability to build interactive digital experiences, imp
 
 # Game Preview
 
-## Main Menu
+### Main Menu
 
 https://github.com/wagamama22/RoadRampage/blob/main/assets/rr-menu.png
 
